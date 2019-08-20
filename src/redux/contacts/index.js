@@ -26,6 +26,7 @@ const contactsReducer = (state=INITIAL_STATE, action) => {
         ...state,
         contacts: state.contacts.filter(contact => contact.id !== action.payload.id)
       }
+    
     default:
       return state;
   }

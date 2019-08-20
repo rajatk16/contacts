@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Message, List, Button } from 'semantic-ui-react';
-import { deleteContact } from '../../redux/contacts/actions';
-
+import { Message, List, Button} from 'semantic-ui-react';
+import {deleteContact} from '../../redux/contacts/actions';
+import { showEditForm} from '../../redux/editForm/actions';
+import EditForm from '../EditForm';
+import 'rodal/lib/rodal.css';
 
 class ContactList extends Component {
-  
   renderList = (contacts) => {
+    const {showEditForm} = this.props;
     return contacts.map(contact => {
       return (
         <List key={contact.id} relaxed divided style={{cursor: "pointer"}}>
@@ -27,9 +29,11 @@ class ContactList extends Component {
             </div>
             <div style={{display: "flex", flexDirection: "column"}}>
               <Button negative style={{marginBottom: "5px"}} onClick={() => this.props.deleteContact(contact)}>Delete</Button>
-              <Button>Edit</Button>
+              <Button onClick={showEditForm}>Edit</Button>
             </div>
+            <EditForm contact={contact}/>
           </div>
+          <hr/>
         </List>
       )
     })
@@ -51,17 +55,22 @@ class ContactList extends Component {
       )
     } else {
       return (
-        this.renderList(contacts)
+        <div>
+          {this.renderList(contacts)}
+        </div>
       );
     }
   }
 }
 
 const mapStateToProps = state => ({
-  contacts: state.contacts
+  contacts: state.contacts,
+  showEdit: state.showEdit
 })
 
 const mapDispatchToProps = dispatch => ({
-  deleteContact: (contact) => dispatch(deleteContact(contact))
+  deleteContact: (contact) => dispatch(deleteContact(contact)),
+  showEditForm: () => dispatch(showEditForm())
 })
+
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

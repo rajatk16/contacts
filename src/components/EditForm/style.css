@@ -1,0 +1,49 @@
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.circle {
+  position: relative;
+  height: 10vh;
+  width: 10vh;
+  margin: 10px auto;
+  border-radius: 50%;
+  background: #3D8782;
+}
+
+.image-upload {
+  height: 10vh;
+  cursor: pointer;
+  z-index: 1;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+span {
+  position: absolute;
+  align-self: center;
+  right: 15px;
+  top: 40px;
+  color: white;
+  cursor: pointer;
+}

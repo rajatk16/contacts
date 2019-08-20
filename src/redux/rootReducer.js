@@ -4,6 +4,8 @@ import storage from 'redux-persist/lib/storage';
 
 import contactsReducer from './contacts';
 import modalReducer from './modal';
+import editFormReducer from './editForm';
+
 
 const persistConfig = {
   key: 'root',
@@ -13,7 +15,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   modal: modalReducer,
-  contacts: contactsReducer
+  contacts: contactsReducer,
+  editForm: editFormReducer
 })
 
 export default persistReducer(persistConfig, rootReducer);
