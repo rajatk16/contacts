@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { Message, List, Button } from 'semantic-ui-react';
+import { deleteContact } from '../../redux/contacts/actions';
 
 
 class ContactList extends Component {
@@ -25,7 +26,7 @@ class ContactList extends Component {
               </div>
             </div>
             <div style={{display: "flex", flexDirection: "column"}}>
-              <Button negative style={{marginBottom: "5px"}}>Delete</Button>
+              <Button negative style={{marginBottom: "5px"}} onClick={() => this.props.deleteContact(contact)}>Delete</Button>
               <Button>Edit</Button>
             </div>
           </div>
@@ -59,4 +60,8 @@ class ContactList extends Component {
 const mapStateToProps = state => ({
   contacts: state.contacts
 })
-export default connect(mapStateToProps)(ContactList);
+
+const mapDispatchToProps = dispatch => ({
+  deleteContact: (contact) => dispatch(deleteContact(contact))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(ContactList);
