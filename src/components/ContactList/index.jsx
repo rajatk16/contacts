@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Message, List, Button, Image} from 'semantic-ui-react';
+import { Message, List, Button} from 'semantic-ui-react';
 import {deleteContact} from '../../redux/contacts/actions';
 import { showEditForm} from '../../redux/editForm/actions';
 import EditForm from '../EditForm';
+import RenderImage from '../RenderImage';
 import 'rodal/lib/rodal.css';
 
 class ContactList extends Component {
@@ -15,7 +16,7 @@ class ContactList extends Component {
           <div style={{display: "flex", justifyContent: "space-between"}}>
             <div>
               <div style={{display: "flex", flexDirection: 'row'}}>
-                <Image avatar src={contact.image} />
+                <RenderImage contact={contact}/>
                 {/* <List.Icon name="user" size="large"/> */}
                 <List.Header>{contact.firstName} {contact.lastName}</List.Header>
               </div>

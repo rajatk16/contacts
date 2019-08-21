@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {addContact} from '../../redux/contacts/actions';
 import './style.css';
 import { hideModal } from '../../redux/modal/actions';
+import {storage} from '../../firebase'
 
 class AddForm extends Component {
   state = {
@@ -13,10 +14,27 @@ class AddForm extends Component {
     firstName: '',
     lastName: '',
     phone: '',
-    email: ''
+    email: '',
+    imageName: ''
   }
+
+  handleImage = event => {
+    if (event.target.files[0]) {
+      const imageName = event.target.files[0];
+      this.setState({imageName})
+    }
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
+    const {imageName, firstName} = this.state;
+    const uploadTask = storage.ref(`images/${firstName}`).put(imageName);
+    uploadTask.on('state_changed',
+      (snapshot) => {},
+      (error) => {
+        console.log(error);
+      }
+    )
     this.props.addContact(this.state);
     this.setState({
       id: '',
@@ -24,7 +42,8 @@ class AddForm extends Component {
       firstName: '',
       lastName: '',
       phone: '',
-      email: ''
+      email: '',
+      imageName: ''
     })
     this.props.hideModal()
   }
@@ -54,15 +73,12 @@ class AddForm extends Component {
             <div className="circle">
               <div className="content">
                 <Input
+                  required
                   className="image-upload" 
                   style={{cursor: "pointer"}} 
                   type="file" accept="image/*" 
                   placeholder="Add Photo"
-                  onChange={(event) => {
-                    const {files} = event.target;
-                    const localImageUrl = window.URL.createObjectURL(files[0])
-                    this.setState({image: localImageUrl})
-                  }}
+                  onChange={this.handleImage}
                   />
                 <span>Add Photo</span>
               </div>

@@ -6,7 +6,7 @@ import 'rodal/lib/rodal.css';
 import './style.css';
 import { hideEditForm } from '../../redux/editForm/actions';
 import {deleteContact, addContact} from '../../redux/contacts/actions';
-
+import {storage} from '../../firebase';
 class EditForm extends Component {
   state = {
     id: this.props.contact.id,
@@ -14,14 +14,32 @@ class EditForm extends Component {
     firstName: this.props.contact.firstName,
     lastName: this.props.contact.lastName,
     phone: this.props.contact.phone,
-    email: this.props.contact.email
+    email: this.props.contact.email,
+    imageName: ''
   }
 
   formSubmit = (event) => {
     event.preventDefault();
     this.props.deleteContact(this.props.contact);
+    const {imageName, firstName} = this.state;
+    storage
+      .ref(`images/${firstName}`)
+      .put(imageName)
+      .on('state_changed',
+        (snapshot) => {},
+        (error) => {
+          console.log(error);
+        }
+      )
     this.props.addContact(this.state);
     this.props.hideEditForm();
+  }
+
+  handleImage = (event) => {
+    if (event.target.files[0]) {
+      const imageName = event.target.files[0];
+      this.setState({imageName})
+    }
   }
 
   render() {
@@ -59,11 +77,7 @@ class EditForm extends Component {
                   style={{cursor: "pointer"}} 
                   type="file" accept="image/*" 
                   placeholder="Add Photo"
-                  onChange={(event) => {
-                    const {files} = event.target;
-                    const localImageUrl = window.URL.createObjectURL(files[0])
-                    this.setState({image: localImageUrl})
-                  }}
+                  onChange={this.handleImage}
                   />
                 <span>Add Photo</span>
               </div>

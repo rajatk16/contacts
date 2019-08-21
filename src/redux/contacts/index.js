@@ -17,7 +17,8 @@ const contactsReducer = (state=INITIAL_STATE, action) => {
             id: action.payload.id,
             image: action.payload.image,
             lastName: action.payload.lastName,
-            phone: action.payload.phone
+            phone: action.payload.phone,
+            imageName: action.payload.imageName
           }
         ]
       }
