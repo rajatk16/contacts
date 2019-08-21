@@ -5,7 +5,8 @@ import { Image } from 'semantic-ui-react';
 
 class RenderImage extends Component {
   async componentDidMount() {
-    const url = await storage.ref('images').child(`${this.props.contact.firstName}`).getDownloadURL();
+    const {firstName, id} = this.props.contact;
+    const url = await storage.ref('images').child(`${firstName}${id}`).getDownloadURL();
     this.setState({url})
   }
 

@@ -21,9 +21,9 @@ class EditForm extends Component {
   formSubmit = (event) => {
     event.preventDefault();
     this.props.deleteContact(this.props.contact);
-    const {imageName, firstName} = this.state;
+    const {imageName, id, firstName} = this.state;
     storage
-      .ref(`images/${firstName}`)
+      .ref(`images/${firstName}${id}`)
       .put(imageName)
       .on('state_changed',
         (snapshot) => {},
@@ -70,18 +70,15 @@ class EditForm extends Component {
             </Button>
           </div>
           <Form.Field>
-            <div className="circle">
-              <div className="content">
-                <Input
-                  className="image-upload" 
-                  style={{cursor: "pointer"}} 
-                  type="file" accept="image/*" 
-                  placeholder="Add Photo"
-                  onChange={this.handleImage}
-                  />
-                <span>Add Photo</span>
-              </div>
-            </div>
+            <Label>
+              Change Photo
+            </Label>
+            <Input
+              style={{cursor: "pointer"}} 
+              type="file" accept="image/*" 
+              placeholder="Add Photo"
+              onChange={this.handleImage}
+              />
           </Form.Field>
           <Form.Field>
             <Input 

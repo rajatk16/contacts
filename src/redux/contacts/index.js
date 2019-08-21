@@ -15,10 +15,10 @@ const contactsReducer = (state=INITIAL_STATE, action) => {
             email: action.payload.email,
             firstName: action.payload.firstName,
             id: action.payload.id,
-            image: action.payload.image,
+            // image: action.payload.image,
             lastName: action.payload.lastName,
             phone: action.payload.phone,
-            imageName: action.payload.imageName
+            // imageName: action.payload.imageName
           }
         ]
       }

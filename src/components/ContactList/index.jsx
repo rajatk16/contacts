@@ -45,13 +45,7 @@ class ContactList extends Component {
     const {contacts} = this.props.contacts;
     if (contacts.length === 0) {
       return (
-        <Message 
-          floating 
-          style={{
-            padding: "20px", 
-            width: "18vw",
-            top: "10px",
-          }}>
+        <Message floating style={{textAlign: 'center'}}>
           <h4>No Contacts Found</h4>
         </Message>
       )

@@ -27,8 +27,8 @@ class AddForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const {imageName, firstName} = this.state;
-    const uploadTask = storage.ref(`images/${firstName}`).put(imageName);
+    const {imageName, id, firstName} = this.state;
+    const uploadTask = storage.ref(`images/${firstName}${id}`).put(imageName);
     uploadTask.on('state_changed',
       (snapshot) => {},
       (error) => {
@@ -70,19 +70,15 @@ class AddForm extends Component {
             </Button>
           </div>
           <Form.Field>
-            <div className="circle">
-              <div className="content">
-                <Input
-                  required
-                  className="image-upload" 
-                  style={{cursor: "pointer"}} 
-                  type="file" accept="image/*" 
-                  placeholder="Add Photo"
-                  onChange={this.handleImage}
-                  />
-                <span>Add Photo</span>
-              </div>
-            </div>
+            <Label>
+              Add Photo
+            </Label>
+            <Input
+              required 
+              type="file" accept="image/*" 
+              placeholder="Add Photo"
+              onChange={this.handleImage}
+              />
           </Form.Field>
           <Form.Field>
             <Input 
