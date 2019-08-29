@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {storage} from '../../firebase';
-import { Image } from 'semantic-ui-react';
 
+import './style.css';
 
 class RenderImage extends Component {
   async componentDidMount() {
@@ -16,7 +16,7 @@ class RenderImage extends Component {
 
   render() {
     return (
-      <Image avatar src={this.state.url}/>
+      <img alt="profile-pic" src={this.state.url} />
     )
   }
 }

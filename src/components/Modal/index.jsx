@@ -10,10 +10,16 @@ const Modal = ({visible, hideModal}) => {
     <Rodal
       visible={visible}
       onClose={hideModal}
-      height={500}
+      height={400}
       showCloseButton={false}
+      customStyles={{
+        background: 'rgba(255, 255, 255, 0.970024)',
+        border: '1px solid #FFFFFF',
+        boxSizing: 'border-box',
+        borderRadius: '15px'}}
     >
-      <AddForm onCancel={hideModal}/>
+      <AddForm 
+        onCancel={hideModal}/>
     </Rodal>
   )
 }

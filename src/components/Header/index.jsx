@@ -9,11 +9,11 @@ class Header extends Component {
     const {showModal} = this.props;
     return (
       <div>
-        <h3>
+        <h3 style={{color: "rgba(0,0,0,0.967957)"}}>
           My Contacts
           <Icon 
             name="add" 
-            style={{ float: 'right', cursor: 'pointer' }}
+            style={{ float: 'right', cursor: 'pointer', color: '#757575' }}
             onClick={showModal} 
           />
         </h3>

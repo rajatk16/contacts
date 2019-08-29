@@ -1,0 +1,51 @@
+.contact-list {
+  position: relative;
+  top: 20px;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.contact .icon {
+  opacity: 0;
+}
+
+.contact:hover {
+  background: rgba(232, 232, 232, 0.221666);
+  border-radius: 38px;
+}
+
+.contact:hover .icon {
+  opacity: 1;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  margin-left: 15px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.edit {
+  color: #679ED0;
+}
+
+.delete {
+  color: #EE7B7B;
+}

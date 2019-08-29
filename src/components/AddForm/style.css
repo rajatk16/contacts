@@ -12,17 +12,29 @@ input[type=number]::-webkit-outer-spin-button {
   margin-bottom: 10px;
 }
 
+.part-1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.part-2 {
+  position: relative;
+  margin-left: 25px;
+  left: 25px;
+}
+
 .circle {
   position: relative;
-  height: 10vh;
-  width: 10vh;
+  left: 25px;
+  height: 5vh;
+  width: 5vh;
   margin: 10px auto;
   border-radius: 50%;
   background: #3D8782;
 }
 
 .image-upload {
-  height: 10vh;
+  height: 5vh;
   cursor: pointer;
   z-index: 1;
   opacity: 0;
@@ -46,4 +58,26 @@ span {
   top: 40px;
   color: white;
   cursor: pointer;
+}
+
+.part-3 {
+  display: flex;
+  flex-direction: row;
+}
+
+hr {
+  border: 1px solid #979797;
+}
+
+label {
+  font-size: 20px;
+  font-family: 'Open Sans';
+  max-lines: 1;
+  color: #3D8782;
+}
+
+.phone-email {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
